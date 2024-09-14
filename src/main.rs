@@ -1,4 +1,14 @@
 
+mod zstd {
+    pub mod c;
+}
+mod lz4 {
+    pub mod c;
+}
+mod xz2 {
+    pub mod c;
+}
+
 mod encryption;
 mod decryption;
 mod decompression;

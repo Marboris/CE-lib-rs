@@ -1,20 +1,11 @@
 use std::fs::File;
-use std::io::{self, Write};
-use zstd::stream::Encoder;
+use std::io::{self, Write, Read};
 use std::io::BufWriter;
 
-const COMPRESSION_LEVEL: i32 = 0; // 0 is faster, 22 is smaller but slower
 
-// تابع برای فشرده‌سازی داده‌ها
-fn compress_data(input: &[u8]) -> io::Result<Vec<u8>> {
-    let mut compressed_data = Vec::new();  // استفاده از یک وکتور برای ذخیره داده‌های فشرده شده
-    let mut encoder = Encoder::new(&mut compressed_data, COMPRESSION_LEVEL)?;
-    
-    encoder.write_all(input)?;  // فشرده‌سازی داده‌های ورودی
-    encoder.finish()?;  // پایان فرآیند فشرده‌سازی
-    
-    Ok(compressed_data)  // برگرداندن داده‌های فشرده شده
-}
+
+
+
 
 // تابع برای ذخیره‌سازی داده‌ها در یک فایل
 fn save_to_file(data: &[u8], file_path: &str) -> io::Result<u64> {
